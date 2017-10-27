@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 mongoose.Promise = global.Promise;
 
@@ -8,6 +9,8 @@ const {PORT, DATABASE_URL} = require('./config');
 const {Post} = require('./models');
 
 const app = express();
+
+app.use(morgan('common'));
 app.use(bodyParser.json());
 
 
