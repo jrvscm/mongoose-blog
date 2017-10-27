@@ -44,7 +44,7 @@ app.get('/blogposts/:id', (req, res) => {
 });
 
 app.post('/blogposts', (req, res) => {
-	const requiredFields = ['title', 'content', 'author', 'created'];
+	const requiredFields = ['title', 'content', 'author'];
 	for(let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if(!(field in req.body)) {
@@ -58,7 +58,6 @@ app.post('/blogposts', (req, res) => {
 		title: req.body.title,
 		content: req.body.content,
 		author: req.body.author,
-		created: req.body.created
 	})
 	.then(
 		post => res.status(201).json(post.apiRepr()))
@@ -78,7 +77,7 @@ app.put(`/blogposts/:id`, (req, res) => {
 	}
 
 	const toUpdate = {};
-	const updateableFields =['title', 'content', 'author', 'created'];
+	const updateableFields =['title', 'content', 'author'];
 
 	updateableFields.forEach(field => {
 		if (field in req.body) {
