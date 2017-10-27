@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-
+const DateGenerator = require('random-date-generator');
 //scheme to represent a blog post
+
 const blogPostSchema = mongoose.Schema({
 	title: {type: String, required: true},
 	author: {
@@ -8,7 +9,7 @@ const blogPostSchema = mongoose.Schema({
 		lastName: String
 	},
 	content: {type: String, required: true},
-	created: {type: String, required: true}
+	created: {type: String}
 });
 
 //virtual fullname 
@@ -23,7 +24,7 @@ blogPostSchema.methods.apiRepr = function() {
 		title: this.title,
 		content: this.content,
 		author: this.fullNameString,
-		created: this.created
+		created: DateGenerator.getRandomDate()
 	};
 }
 
