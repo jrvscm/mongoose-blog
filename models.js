@@ -30,4 +30,4 @@ blogPostSchema.methods.apiRepr = function() {
 
 const Post = mongoose.model('Post', blogPostSchema);
 
-module.exports = {Post};
+module.exports = {Post, DateGenerator};
